@@ -1,0 +1,147 @@
+<div class="bg-white rounded-md p-8 flex flex-col gap-4">
+  <div class="flex justify-between items-center">
+    <h2 class="text-lg font-bold underline">Yeni Kullanıcı Ekle</h2>
+    <button (click)="closeDialog()" class="text-black cursor-pointer">
+      <span class="material-symbols-outlined"> close </span>
+    </button>
+  </div>
+
+  <div class="flex flex-col gap-2">
+    <div class="flex gap-2 w-full">
+      <div class="w-1/2 flex flex-col">
+        <label for="firstName" class="text-sm font-semibold">Ad</label>
+        <input
+          id="firstName"
+          type="text"
+          placeholder="Örn: Ahmet"
+          [(ngModel)]="newUser.first_name"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <label for="lastName" class="text-sm font-semibold">Soyad</label>
+        <input
+          id="lastName"
+          type="text"
+          placeholder="Örn: Yılmaz"
+          [(ngModel)]="newUser.last_name"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+      </div>
+    </div>
+
+    <div class="flex gap-2 w-full">
+      <div class="w-1/2 flex flex-col">
+        <label for="username" class="text-sm font-semibold"
+          >Kullanıcı Adı</label
+        >
+        <input
+          id="username"
+          type="text"
+          placeholder="Örn: ahmetyilmaz"
+          minlength="5"
+          maxlength="20"
+          [(ngModel)]="newUser.username"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+        <div *ngIf="usernameTaken" class="text-red-500 text-xs mt-1">
+          Bu kullanıcı adı zaten alınmış.
+        </div>
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <label for="phone" class="text-sm font-semibold">Telefon</label>
+        <input
+          id="phone"
+          type="text"
+          placeholder="Örn: +905xxxxxxxxx"
+          [(ngModel)]="newUser.phone"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+        <div *ngIf="phoneTaken" class="text-red-500 text-xs mt-1">
+          Bu telefon numarası zaten kayıtlı.
+        </div>
+        <div *ngIf="isPhoneInvalid" class="text-red-500 text-xs">
+          Geçerli bir telefon numarası girin (örn: +905xxxxxxxxx).
+        </div>
+      </div>
+    </div>
+
+    <div class="flex gap-2 w-full">
+      <div class="w-1/2 flex flex-col">
+        <label for="email" class="text-sm font-semibold">Email</label>
+        <input
+          id="email"
+          type="email"
+          placeholder="Örn: ahmet@example.com"
+          [(ngModel)]="newUser.email"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+        <div *ngIf="emailTaken" class="text-red-500 text-xs mt-1">
+          Bu e-posta zaten kayıtlı.
+        </div>
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <label for="password" class="text-sm font-semibold">Şifre</label>
+        <div class="relative">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Örn: 1234Aa@"
+            [(ngModel)]="newUser.password"
+            class="border border-gray-300 rounded-md p-2 pr-10 w-full focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+          />
+          <span
+            class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+            (click)="togglePasswordVisibility()"
+          >
+            {{ showPassword ? "visibility" : "visibility_off" }}
+          </span>
+        </div>
+        <div *ngIf="isPasswordInvalid" class="text-red-500 text-sm mt-1">
+          Geçerli bir şifre: 8+ karakter, harf, sayı, özel karakter.
+        </div>
+      </div>
+    </div>
+
+    <div class="w-full flex flex-col gap-2">
+      <label class="text-sm font-semibold">Onay Durumu</label>
+      <div class="flex gap-4">
+        <label class="flex items-center gap-2">
+          <input
+            type="radio"
+            name="verified"
+            [value]="false"
+            [(ngModel)]="newUser.isVerified"
+            class="accent-red-600"
+          />
+          <span class="material-symbols-outlined text-gray-400">
+            verified_off
+          </span>
+          <span>Onaysız</span>
+        </label>
+        <label class="flex items-center gap-2">
+          <input
+            type="radio"
+            name="verified"
+            [value]="true"
+            [(ngModel)]="newUser.isVerified"
+            class="accent-red-600"
+          />
+          <span class="material-symbols-outlined text-green-600">
+            verified
+          </span>
+          <span>Onaylı</span>
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-4 justify-end">
+    <button
+      (click)="addUser()"
+      class="px-4 py-1 rounded-full text-white bg-red-600 cursor-pointer hover:bg-red-700 transition"
+    >
+      Kaydet
+    </button>
+  </div>
+</div>

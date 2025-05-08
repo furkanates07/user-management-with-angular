@@ -1,0 +1,20 @@
+<div class="bg-white rounded-lg">
+  <h2 mat-dialog-title>Silmek İstediğinize Emin Misiniz?</h2>
+
+  <mat-dialog-content>
+    <p>Bu işlem geri alınamaz.</p>
+  </mat-dialog-content>
+
+  <mat-dialog-actions class="flex justify-end gap-8">
+    <button mat-button class="underline cursor-pointer" (click)="onCancel()">
+      İptal
+    </button>
+    <button
+      mat-button
+      class="px-8 py-2 rounded-full text-white bg-red-500 cursor-pointer"
+      (click)="onConfirm()"
+    >
+      Sil
+    </button>
+  </mat-dialog-actions>
+</div>

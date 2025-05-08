@@ -1,0 +1,59 @@
+<div class="overflow-x-auto px-8">
+  <table class="table-fixed w-full shadow-lg rounded-lg">
+    <thead class="bg-gray-300 border-b-4 border-b-red-700 uppercase text-sm">
+      <tr>
+        <th class="w-16 px-4 py-3 text-left">ID</th>
+        <th class="w-32 px-4 py-3 text-left">Ad</th>
+        <th class="w-32 px-4 py-3 text-left">Soyad</th>
+        <th class="w-40 px-4 py-3 text-left">Kullanıcı Adı</th>
+        <th class="w-60 px-4 py-3 text-left">Email</th>
+        <th class="w-40 px-4 py-3 text-left">Şifre</th>
+        <th class="w-40 px-4 py-3 text-left">Telefon</th>
+        <th class="w-40 px-4 py-3 text-left">Onay Durumu</th>
+        <th class="w-32 px-4 py-3 text-left">İşlemler</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-gray-200">
+      <tr *ngIf="users.length === 0">
+        <td colspan="8" class="text-center py-4 text-gray-500">
+          Kullanıcı bulunamadı
+        </td>
+      </tr>
+      <tr *ngFor="let user of users" class="hover:bg-gray-50">
+        <td class="px-4 py-3 truncate">{{ user.id }}</td>
+        <td class="px-4 py-3 truncate">{{ user.first_name }}</td>
+        <td class="px-4 py-3 truncate">{{ user.last_name }}</td>
+        <td class="px-4 py-3 truncate">{{ user.username }}</td>
+        <td class="px-4 py-3 truncate">{{ user.email }}</td>
+        <td class="px-4 py-3 truncate">{{ user.password | maskPassword }}</td>
+        <td class="px-4 py-3 truncate">{{ user.phone }}</td>
+        <td class="px-4 py-3">
+          <span
+            class="material-symbols-outlined"
+            [ngClass]="user.isVerified ? 'text-green-600' : 'text-gray-400'"
+          >
+            {{ user.isVerified ? "verified" : "verified_off" }}
+          </span>
+        </td>
+        <td class="px-4 py-3">
+          <div class="flex gap-4">
+            <button
+              (click)="openUserInfoDialog(user)"
+              class="text-blue-700 flex items-center hover:text-blue-900 transition cursor-pointer"
+              title="Detay"
+            >
+              <span class="material-symbols-outlined"> info </span>
+            </button>
+            <button
+              (click)="openDeleteDialog(user.id)"
+              class="text-red-700 flex items-center hover:text-red-900 transition cursor-pointer"
+              title="Sil"
+            >
+              <span class="material-symbols-outlined"> delete </span>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

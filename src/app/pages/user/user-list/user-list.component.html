@@ -1,0 +1,10 @@
+<div class="min-h-screen flex flex-col">
+  <app-user-table-header
+    (searchQueryChange)="searchQuery = $event; filterUsers()"
+  ></app-user-table-header>
+
+  <app-user-table
+    [users]="filteredUsers"
+    (delete)="deleteUser($event)"
+  ></app-user-table>
+</div>

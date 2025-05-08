@@ -1,59 +1,90 @@
-# UserMng
+# User Management Angular Project
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.10.
+This project provides an Angular application for managing users. Users can be listed, added, updated, and deleted with various functionalities. The project is styled with **Tailwind CSS** and developed with **Angular**.
 
-## Development server
+## Features
 
-To start a local development server, run:
+- **User List Page**: A page for listing users.
+- **Add User**: A form to add a new user.
+- **Update User**: A form to update existing users.
+- **User Details Dialog**: A dialog to view user details.
+- **Delete User Dialog**: A confirmation dialog to delete a user.
+- **User Filtering**: Filter users by **first name**, **last name**, **username**, **email**, and **phone number**.
+
+## Technologies Used
+
+- **Angular**: Web application development framework.
+- **Tailwind CSS**: A utility-first CSS framework for building custom designs.
+
+## User Service
+
+Users are currently loaded from the **`assets/data/users.json`** file. The **UserService** class provides a centralized way to manage user data using RxJS and `BehaviorSubject`.
+
+### User Operations
+
+- **List Users**: Access the current list of users using the `users$` observable or `getUsers()` method.
+- **Get User by ID**: Retrieve a user using `getUserById(id: number)`.
+
+- **Add User**: Use `addUser(user: User)` to add a new user. A unique ID is automatically assigned based on the current maximum ID.
+
+- **Update User**: Use `updateUser(updatedUser: User)` to update the details of an existing user.
+
+- **Delete User**: Use `deleteUser(id: number)` to remove a user from the list.
+
+- **Verify/Unverify User**:
+
+  - `verifyUser(id: number)`: Marks a user as verified.
+  - `unverifyUser(id: number)`: Marks a user as unverified.
+
+- **Check for Duplicate Fields**:
+  - `isEmailTaken(email: string, excludeUserId?: number)`: Checks if the email already exists.
+  - `isPhoneTaken(phone: string, excludeUserId?: number)`: Checks if the phone number already exists.
+  - `isUsernameTaken(username: string, excludeUserId?: number)`: Checks if the username already exists.
+
+> ⚠️ Currently, all user operations are performed in memory, and changes are not persisted to disk or a backend server.
+
+## Images
+
+- **User List**
+  ![UserList](/src/assets/screenshots/user-list.jpeg)
+
+- **User Details**
+  ![UserDetails](/src/assets/screenshots/user-details-dialog.jpeg)
+
+- **Update User**
+  ![UpdateUser](/src/assets/screenshots/update-user-dialog.jpeg)
+
+- **Add User**
+  ![AddUser](/src/assets/screenshots/add-user-dialog.jpeg)
+
+- **Filter User**
+  ![FilterUser](/src/assets/screenshots/filter-user.jpeg)
+
+- **Delete User**
+  ![DeleteUser](/src/assets/screenshots/delete-user-dialog.jpeg)
+
+## Setup
+
+1. Clone the repository to your local machine:
 
 ```bash
-ng serve
+git clone https://github.com/furkanates07/user-management.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+2. Install the required dependencies:
 
 ```bash
-ng generate component component-name
+npm install
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+3. Start the project:
 
 ```bash
-ng generate --help
+ng serve -o
 ```
 
-## Building
+4. Access the app via your browser at `http://localhost:4200`.
 
-To build the project run:
+## Contributing
 
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Feel free to submit issues or pull requests if you find any bugs or want to add new features.
