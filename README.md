@@ -68,7 +68,7 @@ Users are currently loaded from the **`assets/data/users.json`** file. The **Use
 1. Clone the repository to your local machine:
 
 ```bash
-git clone https://github.com/furkanates07/user-management.git
+git clone https://github.com/furkanates07/user-management-with-angular.git
 ```
 
 2. Install the required dependencies:
