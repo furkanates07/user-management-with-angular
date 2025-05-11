@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { User } from '../../models/user.model';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
@@ -10,19 +11,15 @@ export class UserService {
 
   users$: Observable<User[]> = this.users.asObservable();
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.loadUsersFromJson();
   }
 
   private loadUsersFromJson(): void {
-    fetch('http://localhost:4200/assets/data/users.json')
-      .then((response) => response.json())
-      .then((data: User[]) => {
-        this.users.next(data);
-      })
-      .catch((error) => {
-        console.error('Error loading users from JSON', error);
-      });
+    this.http.get<User[]>('assets/data/users.json').subscribe({
+      next: (data) => this.users.next(data),
+      error: (err) => console.error('Error loading users from JSON file:', err),
+    });
   }
 
   getUsers(): Observable<User[]> {
