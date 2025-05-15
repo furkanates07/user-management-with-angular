@@ -1,25 +1,258 @@
-<div class="overflow-x-auto px-8">
+<div class="overflow-x-auto px-4 mx-8">
   <table class="table-fixed w-full shadow-lg rounded-lg">
-    <thead class="bg-gray-300 border-b-4 border-b-red-700 uppercase text-sm">
+    <thead class="border-b-4 border-b-red-700 uppercase text-sm">
       <tr>
-        <th class="w-16 px-4 py-3 text-left">ID</th>
-        <th class="w-32 px-4 py-3 text-left">Ad</th>
-        <th class="w-32 px-4 py-3 text-left">Soyad</th>
-        <th class="w-40 px-4 py-3 text-left">Kullanıcı Adı</th>
-        <th class="w-60 px-4 py-3 text-left">Email</th>
-        <th class="w-40 px-4 py-3 text-left">Şifre</th>
-        <th class="w-40 px-4 py-3 text-left">Telefon</th>
-        <th class="w-40 px-4 py-3 text-left">Onay Durumu</th>
-        <th class="w-32 px-4 py-3 text-left">İşlemler</th>
+        <th class="w-16 px-4 py-3 hover:bg-gray-300 cursor-pointer">
+          <div
+            (click)="cycleSort('id')"
+            class="flex justify-start gap-2 items-center"
+          >
+            <span>ID</span>
+            <span class="material-symbols-outlined text-gray-500">
+              swap_vert
+            </span>
+          </div>
+        </th>
+        <th class="w-32 px-4 py-3 hover:bg-gray-300 cursor-pointer">
+          <div
+            (click)="cycleSort('first_name')"
+            class="flex justify-start gap-2 items-center"
+          >
+            <span>Ad</span>
+            <div class="flex gap-0 text-gray-500">
+              <span class="material-symbols-outlined"> sort </span>
+              <span class="material-symbols-outlined"> swap_vert </span>
+            </div>
+          </div>
+        </th>
+        <th class="w-32 px-4 py-3 hover:bg-gray-300 cursor-pointer">
+          <div
+            (click)="cycleSort('last_name')"
+            class="flex justify-start gap-2 items-center"
+          >
+            <span>Soyad</span>
+            <div class="flex gap-0 text-gray-500">
+              <span class="material-symbols-outlined"> sort </span>
+              <span class="material-symbols-outlined"> swap_vert </span>
+            </div>
+          </div>
+        </th>
+        <th class="w-48 px-4 py-3 hover:bg-gray-300 cursor-pointer">
+          <div
+            (click)="cycleSort('username')"
+            class="flex justify-start gap-2 items-center"
+          >
+            <span>Kullanıcı adı</span>
+            <div class="flex gap-0 text-gray-500">
+              <span class="material-symbols-outlined"> sort </span>
+              <span class="material-symbols-outlined"> swap_vert </span>
+            </div>
+          </div>
+        </th>
+        <th class="w-52 px-4 py-3 hover:bg-gray-300 cursor-pointer">
+          <div
+            (click)="cycleSort('email')"
+            class="flex justify-start gap-2 items-center"
+          >
+            <span>Email</span>
+            <div class="flex gap-0 text-gray-500">
+              <span class="material-symbols-outlined"> sort </span>
+              <span class="material-symbols-outlined"> swap_vert </span>
+            </div>
+          </div>
+        </th>
+        <th class="w-24 px-4 py-3 text-left">Şifre</th>
+        <th class="w-36 px-4 py-3 text-left">Telefon</th>
+        <th class="w-32 px-4 py-3 text-left">Onay Durumu</th>
+        <th class="w-24 px-4 py-3 text-left">İşlemler</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-gray-200">
+      <tr>
+        <td class="p-2">
+          <div class="flex items-center">
+            <input
+              type="text"
+              class="w-full border focus:outline-none focus:ring-2 focus:ring-red-800 rounded-md p-2 text-xs text-gray-500"
+              [ngClass]="{
+                ' border-gray-300': tableSearchQuery.id === null,
+                'border-red-700 border-2': tableSearchQuery.id !== null
+              }"
+              placeholder="ID"
+              [ngModel]="
+                tableSearchQuery.id === null ? '' : tableSearchQuery.id
+              "
+              (ngModelChange)="onIdChange($event)"
+            />
+
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="{
+                ' text-gray-500': tableSearchQuery.id === null,
+                'text-red-700': tableSearchQuery.id !== null
+              }"
+            >
+              filter_alt
+            </span>
+          </div>
+        </td>
+        <td class="p-2">
+          <div class="flex items-center">
+            <input
+              type="text"
+              class="w-full border focus:outline-none focus:ring-1 focus:ring-red-600 rounded-md p-2 text-xs text-gray-500"
+              [ngClass]="{
+                ' border-gray-300': tableSearchQuery.first_name === '',
+                'border-red-700 border-2': tableSearchQuery.first_name !== ''
+              }"
+              placeholder="Ad"
+              [(ngModel)]="tableSearchQuery.first_name"
+              (ngModelChange)="filterUsersFromTable()"
+            />
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="{
+                ' text-gray-500': tableSearchQuery.first_name === '',
+                'text-red-700': tableSearchQuery.first_name !== ''
+              }"
+            >
+              filter_alt
+            </span>
+          </div>
+        </td>
+        <td class="p-2">
+          <div class="flex items-center">
+            <input
+              type="text"
+              class="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-600 rounded-md p-2 text-xs text-gray-500"
+              [ngClass]="{
+                ' border-gray-300': tableSearchQuery.last_name === '',
+                'border-red-700 border-2': tableSearchQuery.last_name !== ''
+              }"
+              placeholder="Soyad"
+              [(ngModel)]="tableSearchQuery.last_name"
+              (ngModelChange)="filterUsersFromTable()"
+            />
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="{
+                ' text-gray-500': tableSearchQuery.last_name === '',
+                'text-red-700': tableSearchQuery.last_name !== ''
+              }"
+            >
+              filter_alt
+            </span>
+          </div>
+        </td>
+        <td class="p-2">
+          <div class="flex items-center">
+            <input
+              type="text"
+              class="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-600 rounded-md p-2 text-xs text-gray-500"
+              [ngClass]="{
+                ' border-gray-300': tableSearchQuery.username === '',
+                'border-red-700 border-2': tableSearchQuery.username !== ''
+              }"
+              placeholder="Kullanıcı adı"
+              [(ngModel)]="tableSearchQuery.username"
+              (ngModelChange)="filterUsersFromTable()"
+            />
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="{
+                ' text-gray-500': tableSearchQuery.username === '',
+                'text-red-700': tableSearchQuery.username !== ''
+              }"
+            >
+              filter_alt
+            </span>
+          </div>
+        </td>
+        <td class="p-2">
+          <div class="flex items-center">
+            <input
+              type="text"
+              class="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-600 rounded-md p-2 text-xs text-gray-500"
+              [ngClass]="{
+                ' border-gray-300': tableSearchQuery.email === '',
+                'border-red-700 border-2': tableSearchQuery.email !== ''
+              }"
+              placeholder="Email"
+              [(ngModel)]="tableSearchQuery.email"
+              (ngModelChange)="filterUsersFromTable()"
+            />
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="{
+                ' text-gray-500': tableSearchQuery.email === '',
+                'text-red-700': tableSearchQuery.email !== ''
+              }"
+            >
+              filter_alt
+            </span>
+          </div>
+        </td>
+
+        <td></td>
+
+        <td class="p-2">
+          <div class="flex items-center">
+            <input
+              type="text"
+              class="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-600 rounded-md p-2 text-xs text-gray-500"
+              [ngClass]="{
+                ' border-gray-300': tableSearchQuery.phone === '',
+                'border-red-700 border-2': tableSearchQuery.phone !== ''
+              }"
+              placeholder="Telefon"
+              [(ngModel)]="tableSearchQuery.phone"
+              (ngModelChange)="filterUsersFromTable()"
+            />
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="{
+                ' text-gray-500': tableSearchQuery.phone === '',
+                'text-red-700': tableSearchQuery.phone !== ''
+              }"
+            >
+              filter_alt
+            </span>
+          </div>
+        </td>
+        <td class="p-2">
+          <select
+            class="w-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-red-600 rounded-md p-2 text-xs text-gray-500"
+            [ngClass]="{
+              ' border-gray-300': tableSearchQuery.isVerified === null,
+              'border-red-700 border-2': tableSearchQuery.isVerified !== null
+            }"
+            [(ngModel)]="tableSearchQuery.isVerified"
+            (ngModelChange)="filterUsersFromTable()"
+          >
+            <option [ngValue]="null">Tümü</option>
+            <option [ngValue]="true">Onaylı</option>
+            <option [ngValue]="false">Onaysız</option>
+          </select>
+        </td>
+        <td class="p-2">
+          <div class="flex items-center">
+            <button
+              (click)="resetTableSearchQuery()"
+              class="text-white flex items-center px-2 py-1 rounded-md bg-red-700 hover:bg-red-800 transition cursor-pointer"
+            >
+              <span>Temizle</span>
+            </button>
+          </div>
+        </td>
+      </tr>
+
       <tr *ngIf="users.length === 0">
-        <td colspan="8" class="text-center py-4 text-gray-500">
+        <td colspan="9" class="text-center py-4 text-gray-500">
           Kullanıcı bulunamadı
         </td>
       </tr>
-      <tr *ngFor="let user of users" class="hover:bg-gray-50">
+
+      <tr *ngFor="let user of users" class="hover:bg-gray-100 text-gray-500">
         <td class="px-4 py-3 truncate">{{ user.id }}</td>
         <td class="px-4 py-3 truncate">{{ user.first_name }}</td>
         <td class="px-4 py-3 truncate">{{ user.last_name }}</td>
@@ -28,12 +261,14 @@
         <td class="px-4 py-3 truncate">{{ user.password | maskPassword }}</td>
         <td class="px-4 py-3 truncate">{{ user.phone }}</td>
         <td class="px-4 py-3">
-          <span
-            class="material-symbols-outlined"
-            [ngClass]="user.isVerified ? 'text-green-600' : 'text-gray-400'"
-          >
-            {{ user.isVerified ? "verified" : "verified_off" }}
-          </span>
+          <div class="flex items-center">
+            <span
+              class="material-symbols-outlined"
+              [ngClass]="user.isVerified ? 'text-green-600' : 'text-gray-400'"
+            >
+              {{ user.isVerified ? "verified" : "verified_off" }}
+            </span>
+          </div>
         </td>
         <td class="px-4 py-3">
           <div class="flex gap-4">
