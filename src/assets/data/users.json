@@ -1,13 +1,23 @@
 [
   {
-    "id": 1,
-    "first_name": "Eda",
-    "last_name": "Ateş",
-    "username": "edates",
-    "password": "Furkan123!",
-    "email": "edakar@gmail.com",
-    "phone": "+14012412405",
+    "id": 20,
+    "first_name": "Cemre",
+    "last_name": "Yıldız",
+    "username": "cemrey",
+    "password": "Cemre789!",
+    "email": "cemre@gmail.com",
+    "phone": "+905327654321",
     "isVerified": true
+  },
+  {
+    "id": 12,
+    "first_name": "Selin",
+    "last_name": "Ersoy",
+    "username": "seline",
+    "password": "SelinPass1!",
+    "email": "selin@gmail.com",
+    "phone": "+905340001111",
+    "isVerified": false
   },
   {
     "id": 2,
@@ -30,13 +40,13 @@
     "isVerified": true
   },
   {
-    "id": 4,
-    "first_name": "Mustafa",
-    "last_name": "Aydın",
-    "username": "mustafaa",
-    "password": "Aa123456!",
-    "email": "mustafa@hotmail.com",
-    "phone": "+905555556666",
+    "id": 21,
+    "first_name": "Ali",
+    "last_name": "Güneş",
+    "username": "alig",
+    "password": "Ali1234!",
+    "email": "ali@gmail.com",
+    "phone": "+905331234567",
     "isVerified": false
   },
   {
@@ -59,16 +69,7 @@
     "phone": "+905557778888",
     "isVerified": true
   },
-  {
-    "id": 7,
-    "first_name": "Mehmet",
-    "last_name": "Demir",
-    "username": "mehmetd",
-    "password": "Mehmet789!",
-    "email": "mehmet@gmail.com",
-    "phone": "+905559990000",
-    "isVerified": true
-  },
+
   {
     "id": 8,
     "first_name": "Elif",
@@ -77,6 +78,16 @@
     "password": "Elif987!",
     "email": "elif@gmail.com",
     "phone": "+905321112233",
+    "isVerified": false
+  },
+  {
+    "id": 17,
+    "first_name": "Onur",
+    "last_name": "Tekin",
+    "username": "onurt",
+    "password": "Onur4321!",
+    "email": "onur@gmail.com",
+    "phone": "+905390001111",
     "isVerified": false
   },
   {
@@ -90,14 +101,14 @@
     "isVerified": true
   },
   {
-    "id": 10,
-    "first_name": "Zeynep",
-    "last_name": "Taş",
-    "username": "zeynept",
-    "password": "Zeynep321!",
-    "email": "zeynep@gmail.com",
-    "phone": "+905318889999",
-    "isVerified": false
+    "id": 1,
+    "first_name": "Eda",
+    "last_name": "Ateş",
+    "username": "edates",
+    "password": "Furkan123!",
+    "email": "edakar@gmail.com",
+    "phone": "+14012412405",
+    "isVerified": true
   },
   {
     "id": 11,
@@ -109,16 +120,7 @@
     "phone": "+905337776666",
     "isVerified": true
   },
-  {
-    "id": 12,
-    "first_name": "Selin",
-    "last_name": "Ersoy",
-    "username": "seline",
-    "password": "SelinPass1!",
-    "email": "selin@gmail.com",
-    "phone": "+905340001111",
-    "isVerified": false
-  },
+
   {
     "id": 13,
     "first_name": "Barış",
@@ -140,6 +142,16 @@
     "isVerified": false
   },
   {
+    "id": 7,
+    "first_name": "Mehmet",
+    "last_name": "Demir",
+    "username": "mehmetd",
+    "password": "Mehmet789!",
+    "email": "mehmet@gmail.com",
+    "phone": "+905559990000",
+    "isVerified": true
+  },
+  {
     "id": 15,
     "first_name": "Kerem",
     "last_name": "Bulut",
@@ -159,16 +171,7 @@
     "phone": "+905387778888",
     "isVerified": true
   },
-  {
-    "id": 17,
-    "first_name": "Onur",
-    "last_name": "Tekin",
-    "username": "onurt",
-    "password": "Onur4321!",
-    "email": "onur@gmail.com",
-    "phone": "+905390001111",
-    "isVerified": false
-  },
+
   {
     "id": 18,
     "first_name": "Naz",
@@ -190,23 +193,13 @@
     "isVerified": false
   },
   {
-    "id": 20,
-    "first_name": "Cemre",
-    "last_name": "Yıldız",
-    "username": "cemrey",
-    "password": "Cemre789!",
-    "email": "cemre@gmail.com",
-    "phone": "+905327654321",
-    "isVerified": true
-  },
-  {
-    "id": 21,
-    "first_name": "Ali",
-    "last_name": "Güneş",
-    "username": "alig",
-    "password": "Ali1234!",
-    "email": "ali@gmail.com",
-    "phone": "+905331234567",
+    "id": 4,
+    "first_name": "Mustafa",
+    "last_name": "Aydın",
+    "username": "mustafaa",
+    "password": "Aa123456!",
+    "email": "mustafa@hotmail.com",
+    "phone": "+905555556666",
     "isVerified": false
   }
 ]
