@@ -6,5 +6,7 @@
   <app-user-table
     [users]="filteredUsers"
     (delete)="deleteUser($event)"
+    (searchQueryChange)="tableSearchQuery = $event; filterUsersFromTable()"
+    (sortTypeChange)="onSortTypeChange($event)"
   ></app-user-table>
 </div>
