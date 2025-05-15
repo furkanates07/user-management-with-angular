@@ -1,5 +1,5 @@
-<div class="flex items-center justify-between m-4 px-4">
-  <div class="flex items-center gap-2 text-md">
+<div class="flex items-center justify-between p-4 mx-8 text-sm">
+  <div class="flex items-center gap-2 text-gray-700">
     <span class="underline cursor-pointer">Ana Menü</span>
     <span class="material-symbols-outlined"> chevron_left </span>
     <h1>Marmaris Kullanıcı Listesi</h1>
@@ -12,10 +12,10 @@
         placeholder="Ara"
         [(ngModel)]="searchQuery"
         (ngModelChange)="filterUsers()"
-        class="border border-gray-200 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-red-600 pl-10"
+        class="border border-gray-200 text-gray-500 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 pl-10"
       />
       <span
-        class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2"
+        class="material-symbols-outlined absolute left-3 top-1/2 transform -translate-y-1/2 text-red-700"
       >
         search
       </span>
@@ -23,7 +23,7 @@
 
     <button
       (click)="openAddUserFormDialog()"
-      class="flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-sm hover:bg-red-700 transition cursor-pointer"
+      class="flex items-center gap-1 bg-red-700 text-white p-2 rounded-sm hover:bg-red-800 transition cursor-pointer"
     >
       <span class="material-symbols-outlined"> person_add </span>
       <span>Yeni </span>
