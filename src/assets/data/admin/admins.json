@@ -1,0 +1,50 @@
+[
+  {
+    "id": 66,
+    "first_name": "Furkan",
+    "last_name": "Ateş",
+    "email": "furkan@admin.com",
+    "phone": "+905437161337",
+    "password": "Furkan123!"
+  },
+  {
+    "id": 45,
+    "first_name": "Mert",
+    "last_name": "Turan",
+    "email": "mert@admin.com",
+    "phone": "+905391234567",
+    "password": "Mert4567!"
+  },
+  {
+    "id": 32,
+    "first_name": "İrem",
+    "last_name": "Koşar",
+    "email": "irem@admin.com",
+    "phone": "+905363333222",
+    "password": "IremPass8!"
+  },
+  {
+    "id": 61,
+    "first_name": "Tuna",
+    "last_name": "Bayraktar",
+    "email": "tuna@admin.com",
+    "phone": "+905301112244",
+    "password": "Tuna_1234!"
+  },
+  {
+    "id": 58,
+    "first_name": "Duru",
+    "last_name": "Kurt",
+    "email": "duru@admin.com",
+    "phone": "+905376666555",
+    "password": "Duru2025!"
+  },
+  {
+    "id": 27,
+    "first_name": "Berk",
+    "last_name": "Ergin",
+    "email": "berk@admin.com",
+    "phone": "+905390008899",
+    "password": "Berk_9876!"
+  }
+]

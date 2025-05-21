@@ -1,8 +1,10 @@
 <div class="flex items-center justify-between p-4 mx-8 text-sm">
   <div class="flex items-center gap-2 text-gray-700">
-    <span class="underline cursor-pointer">Ana Menü</span>
+    <span (click)="goToDashboard()" class="underline cursor-pointer"
+      >Ana Menü</span
+    >
     <span class="material-symbols-outlined"> chevron_left </span>
-    <h1>Marmaris Kullanıcı Listesi</h1>
+    <h1>{{ districtName }} Kullanıcı Listesi</h1>
   </div>
 
   <div class="flex items-center gap-4">

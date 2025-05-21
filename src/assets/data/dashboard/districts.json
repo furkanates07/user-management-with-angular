@@ -1,0 +1,23 @@
+[
+  { "id": 1, "name": "Bodrum", "icon": "groups", "fileName": "bodrum" },
+  { "id": 2, "name": "Dalaman", "icon": "groups", "fileName": "dalaman" },
+  { "id": 4, "name": "Datça", "icon": "groups", "fileName": "datca" },
+  { "id": 6, "name": "Fethiye", "icon": "groups", "fileName": "fethiye" },
+  { "id": 7, "name": "Köyceğiz", "icon": "groups", "fileName": "koycegiz" },
+  { "id": 8, "name": "Marmaris", "icon": "groups", "fileName": "marmaris" },
+  { "id": 9, "name": "Menteşe", "icon": "groups", "fileName": "mentese" },
+  { "id": 10, "name": "Ortaca", "icon": "groups", "fileName": "ortaca" },
+  {
+    "id": 11,
+    "name": "Seydikemer",
+    "icon": "groups",
+    "fileName": "seydikemer"
+  },
+  { "id": 12, "name": "Ula", "icon": "groups", "fileName": "ula" },
+  {
+    "id": 13,
+    "name": "Yatağan",
+    "icon": "groups",
+    "fileName": "yatagan"
+  }
+]

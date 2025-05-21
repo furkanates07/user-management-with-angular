@@ -1,0 +1,53 @@
+[
+  {
+    "id": 5,
+    "first_name": "Deniz",
+    "last_name": "Yılmaz",
+    "username": "denizy",
+    "password": "Deniz123!",
+    "email": "deniz@gmail.com",
+    "phone": "+905554443333",
+    "isVerified": false
+  },
+  {
+    "id": 6,
+    "first_name": "Ayşe",
+    "last_name": "Kaya",
+    "username": "aysek",
+    "password": "Ayse456!",
+    "email": "ayse@hotmail.com",
+    "phone": "+905557778888",
+    "isVerified": true
+  },
+
+  {
+    "id": 8,
+    "first_name": "Elif",
+    "last_name": "Çelik",
+    "username": "elifc",
+    "password": "Elif987!",
+    "email": "elif@gmail.com",
+    "phone": "+905321112233",
+    "isVerified": false
+  },
+  {
+    "id": 17,
+    "first_name": "Onur",
+    "last_name": "Tekin",
+    "username": "onurt",
+    "password": "Onur4321!",
+    "email": "onur@gmail.com",
+    "phone": "+905390001111",
+    "isVerified": false
+  },
+  {
+    "id": 9,
+    "first_name": "Burak",
+    "last_name": "Koç",
+    "username": "burakk",
+    "password": "Burak123!",
+    "email": "burak@hotmail.com",
+    "phone": "+905324445566",
+    "isVerified": true
+  }
+]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 23,
+    "first_name": "Mert",
+    "last_name": "Özdemir",
+    "username": "mertoz12",
+    "password": "Mert456!",
+    "email": "mert2@gmail.com",
+    "phone": "+905310000002",
+    "isVerified": false
+  },
+  {
+    "id": 24,
+    "first_name": "Seda",
+    "last_name": "Yavuz",
+    "username": "seday",
+    "password": "Seda789!",
+    "email": "seda3@gmail.com",
+    "phone": "+905310000003",
+    "isVerified": true
+  },
+  {
+    "id": 25,
+    "first_name": "Berk",
+    "last_name": "Koçak",
+    "username": "berkk",
+    "password": "Berk999!",
+    "email": "berk4@gmail.com",
+    "phone": "+905310000004",
+    "isVerified": false
+  }
+]

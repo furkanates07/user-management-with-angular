@@ -7,6 +7,7 @@ import {
   MatDialogRef,
 } from '@angular/material/dialog';
 import { UserService } from '../../../../core/services/user.service';
+import { ValidationService } from '../../../../core/services/validation.service';
 import { User } from '../../../../models/user.model';
 import { isStrongPassword } from '../../../../shared/validation/passwordValidation';
 import { isValidPhone } from '../../../../shared/validation/phoneValidation';
@@ -31,7 +32,8 @@ export class UserInfoDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: User,
     public dialogRef: MatDialogRef<UserInfoDialogComponent>,
-    private userService: UserService
+    private userService: UserService,
+    private validationService: ValidationService
   ) {
     this.user = { ...data };
     this.originalUser = { ...this.user };
@@ -62,15 +64,15 @@ export class UserInfoDialogComponent {
       return;
     }
 
-    this.usernameTaken = this.userService.isUsernameTaken(
+    this.usernameTaken = this.validationService.isUsernameTaken(
       this.user.username,
       this.user.id
     );
-    this.emailTaken = this.userService.isEmailTaken(
+    this.emailTaken = this.validationService.isEmailTaken(
       this.user.email,
       this.user.id
     );
-    this.phoneTaken = this.userService.isPhoneTaken(
+    this.phoneTaken = this.validationService.isPhoneTaken(
       this.user.phone,
       this.user.id
     );

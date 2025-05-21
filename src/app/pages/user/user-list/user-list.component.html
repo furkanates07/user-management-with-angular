@@ -1,4 +1,9 @@
-<div class="min-h-screen flex flex-col">
+<app-spinner
+  *ngIf="isLoading"
+  class="flex items-center justify-center h-[calc(100vh-5rem)]"
+></app-spinner>
+
+<div *ngIf="!isLoading" class="min-h-screen flex flex-col">
   <app-user-table-header
     (searchQueryChange)="searchQuery = $event; filterUsers()"
   ></app-user-table-header>

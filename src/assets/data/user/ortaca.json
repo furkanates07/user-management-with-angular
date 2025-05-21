@@ -1,0 +1,62 @@
+[
+  {
+    "id": 65,
+    "first_name": "Simay",
+    "last_name": "Tuna",
+    "username": "simayt",
+    "password": "Simay321#",
+    "email": "simay.tuna@gmail.com",
+    "phone": "+905390000015",
+    "isVerified": true
+  },
+  {
+    "id": 90,
+    "first_name": "Tuna",
+    "last_name": "Yüce",
+    "username": "tunay",
+    "password": "TunaPass1!",
+    "email": "tuna.yuce@gmail.com",
+    "phone": "+905390000016",
+    "isVerified": false
+  },
+  {
+    "id": 112,
+    "first_name": "Hazal",
+    "last_name": "İnce",
+    "username": "hazali",
+    "password": "Hazal789!",
+    "email": "hazal.ince@gmail.com",
+    "phone": "+905390000017",
+    "isVerified": false
+  },
+  {
+    "id": 103,
+    "first_name": "Batuhan",
+    "last_name": "Topal",
+    "username": "batuhant",
+    "password": "Batu123!",
+    "email": "batuhan.topal@gmail.com",
+    "phone": "+905390000018",
+    "isVerified": true
+  },
+  {
+    "id": 77,
+    "first_name": "İrem",
+    "last_name": "Polat",
+    "username": "iremp",
+    "password": "Irem456#",
+    "email": "irem.polat@gmail.com",
+    "phone": "+905390000019",
+    "isVerified": true
+  },
+  {
+    "id": 69,
+    "first_name": "Ege",
+    "last_name": "Şahin",
+    "username": "eges",
+    "password": "Ege1234!",
+    "email": "ege.sahin@gmail.com",
+    "phone": "+905390000020",
+    "isVerified": false
+  }
+]

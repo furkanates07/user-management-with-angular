@@ -1,6 +1,6 @@
 <header class="sticky top-0 z-50 bg-white shadow-md">
   <div class="flex justify-between p-4 mx-8">
-    <div class="flex gap-1 items-baseline">
+    <div (click)="goHome()" class="flex gap-1 items-baseline cursor-pointer">
       <div>
         <span class="text-3xl font-bold text-red-700">E</span>
         <span class="text-3xl font-bold">si</span>
@@ -10,21 +10,34 @@
         <span class="text-3xl font-bold text-red-700">S</span>
         <span class="text-3xl font-bold">oftware</span>
       </div>
-      <span class="text-sm text-red-700 font-mono font-bold">admin </span>
+      <span
+        *ngIf="isLoggedIn && isAdmin"
+        class="text-sm text-red-700 font-mono font-bold"
+        >admin
+      </span>
     </div>
 
-    <div class="flex gap-4 items-center">
-      <span
-        class="material-symbols-outlined cursor-pointer p-2 hover:text-red-700 hover:scale-120 transition"
+    <div *ngIf="isLoggedIn" class="flex gap-4 items-center">
+      <div
+        class="relative cursor-pointer hover:text-red-700 hover:scale-120 transition"
       >
-        notifications
-      </span>
+        <span class="material-symbols-outlined p-2"> notifications </span>
+        <div
+          *ngIf="unreadNotificationCount > 0"
+          class="absolute top-1 right-1 bg-red-700 text-white rounded-full w-4 h-4 flex items-center justify-center text-xs"
+        >
+          {{ notifications.length }}
+        </div>
+      </div>
+
       <span
+        (click)="goToProfile()"
         class="material-symbols-outlined cursor-pointer p-2 hover:text-red-700 hover:scale-120 transition"
       >
         account_circle
       </span>
       <span
+        (click)="logout()"
         class="material-symbols-outlined cursor-pointer p-2 hover:text-red-700 hover:scale-120 transition"
       >
         logout

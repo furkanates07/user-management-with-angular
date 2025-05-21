@@ -1,0 +1,33 @@
+<app-spinner
+  *ngIf="isLoading"
+  class="flex items-center justify-center h-[calc(100vh-5rem)]"
+></app-spinner>
+
+<div
+  *ngIf="!isLoading"
+  class="min-h-screen flex flex-col items-start justify-start mx-8 p-4 py-16 gap-16"
+>
+  <div class="flex flex-col items-start justify-start gap-4">
+    <h1 class="text-xl font-bold">Hoşgeldin, {{ firstName }}!</h1>
+    <p class="text-gray-600 mt-2">
+      Aşağıdan görmek istediğin ilçelerin kullanıcılarını görüntülemek için
+      tıklayabilirsin.
+    </p>
+  </div>
+
+  <div>
+    <h2 class="text-lg font-bold">İlçeler</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 mt-4">
+      <div
+        *ngFor="let district of districts"
+        (click)="goToDistrict(district.fileName)"
+        class="flex flex-col gap-2 items-center justify-center text-xl w-48 aspect-square bg-red-700 text-white rounded-lg p-4 cursor-pointer hover:bg-red-800 transition duration-200"
+      >
+        <span class="material-symbols-outlined" style="font-size: 2.5rem">
+          {{ district.icon }}
+        </span>
+        <span>{{ district.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>

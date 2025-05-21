@@ -1,0 +1,165 @@
+<div class="bg-white rounded-lg p-8 w-full max-w-2xl">
+  <!-- Modal Header -->
+  <div class="flex justify-between items-center mb-6">
+    <div class="flex gap-2 items-center">
+      <button
+        (click)="authMode = 'login'"
+        [ngClass]="{
+          'font-bold underline text-red-600': authMode === 'login',
+          'text-gray-500': authMode !== 'login'
+        }"
+      >
+        Giriş Yap
+      </button>
+      <span class="text-gray-400">|</span>
+      <button
+        (click)="authMode = 'register'"
+        [ngClass]="{
+          'font-bold underline text-red-600': authMode === 'register',
+          'text-gray-500': authMode !== 'register'
+        }"
+      >
+        Kayıt Ol
+      </button>
+    </div>
+
+    <button (click)="closeDialog()" class="text-black cursor-pointer">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <!-- register -->
+  <div *ngIf="authMode === 'register'" class="flex flex-col gap-2">
+    <div class="flex gap-2 w-full">
+      <div class="w-1/2 flex flex-col">
+        <label for="firstName" class="text-sm font-semibold">Ad</label>
+        <input
+          id="firstName"
+          type="text"
+          placeholder="Örn: Ahmet"
+          [(ngModel)]="newAdmin.first_name"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <label for="lastName" class="text-sm font-semibold">Soyad</label>
+        <input
+          id="lastName"
+          type="text"
+          placeholder="Örn: Yılmaz"
+          [(ngModel)]="newAdmin.last_name"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <label for="email" class="text-sm font-semibold">Email</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="Örn: ahmet@example.com"
+        [(ngModel)]="newAdmin.email"
+        class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+      />
+      <div *ngIf="emailTaken" class="text-red-500 text-xs mt-1">
+        Bu e-posta zaten kayıtlı.
+      </div>
+    </div>
+
+    <div class="flex gap-2 w-full">
+      <div class="w-1/2 flex flex-col">
+        <label for="password" class="text-sm font-semibold">Şifre</label>
+        <div class="relative">
+          <input
+            id="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Örn: 1234Aa@"
+            [(ngModel)]="newAdmin.password"
+            class="border border-gray-300 rounded-md p-2 pr-10 w-full focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+          />
+          <span
+            class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+            (click)="togglePasswordVisibility()"
+          >
+            {{ showPassword ? "visibility" : "visibility_off" }}
+          </span>
+        </div>
+        <div *ngIf="isPasswordInvalid" class="text-red-500 text-sm mt-1">
+          Geçerli bir şifre: 8+ karakter, harf, sayı, özel karakter.
+        </div>
+      </div>
+      <div class="w-1/2 flex flex-col">
+        <label for="phone" class="text-sm font-semibold">Telefon</label>
+        <input
+          id="phone"
+          type="text"
+          placeholder="Örn: +905xxxxxxxxx"
+          [(ngModel)]="newAdmin.phone"
+          class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+        <div *ngIf="phoneTaken" class="text-red-500 text-xs mt-1">
+          Bu telefon numarası zaten kayıtlı.
+        </div>
+        <div *ngIf="isPhoneInvalid" class="text-red-500 text-xs">
+          Geçerli bir telefon numarası girin (örn: +905xxxxxxxxx).
+        </div>
+      </div>
+    </div>
+
+    <div class="flex gap-4 justify-end mt-2">
+      <button
+        (click)="registerAdmin()"
+        class="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-800 transition cursor-pointer"
+      >
+        Kayıt Ol
+      </button>
+    </div>
+  </div>
+
+  <!-- login -->
+  <div *ngIf="authMode === 'login'" class="flex flex-col gap-2">
+    <div class="flex flex-col">
+      <label for="email" class="text-sm font-semibold">Email</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="Örn: ahmet@example.com"
+        [(ngModel)]="login.email"
+        class="border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+      />
+    </div>
+
+    <div class="flex flex-col">
+      <label for="password" class="text-sm font-semibold">Şifre</label>
+      <div class="relative">
+        <input
+          id="password"
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Örn: 1234Aa@"
+          [(ngModel)]="login.password"
+          class="border border-gray-300 rounded-md p-2 pr-10 w-full focus:outline-none focus:ring-2 focus:ring-red-600 placeholder:text-sm placeholder:text-gray-400"
+        />
+        <span
+          class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer text-gray-500"
+          (click)="togglePasswordVisibility()"
+        >
+          {{ showPassword ? "visibility" : "visibility_off" }}
+        </span>
+      </div>
+    </div>
+
+    <div *ngIf="loginError" class="text-red-600 text-sm">
+      Giriş sırasında bir hata oluştu. Lütfen bilgilerinizi kontrol edin.
+    </div>
+
+    <div class="flex gap-4 justify-end mt-2">
+      <button
+        (click)="loginAdmin()"
+        class="bg-red-700 text-white px-4 py-2 rounded-lg hover:bg-red-800 transition cursor-pointer"
+      >
+        Giriş
+      </button>
+    </div>
+  </div>
+</div>
