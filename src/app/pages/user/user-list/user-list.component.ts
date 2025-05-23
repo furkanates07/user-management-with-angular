@@ -1,17 +1,7 @@
-import { CommonModule, isPlatformBrowser } from '@angular/common';
-import {
-  Component,
-  Inject,
-  OnInit,
-  PLATFORM_ID,
-  SimpleChanges,
-} from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SpinnerComponent } from '../../../components/ui/common/spinner/spinner.component';
 import { UserTableHeaderComponent } from '../../../components/ui/user/user-table-header/user-table-header.component';
 import { UserTableComponent } from '../../../components/ui/user/user-table/user-table.component';
-import { AuthService } from '../../../core/services/auth.service';
 import { UserService } from '../../../core/services/user.service';
 import { SortType } from '../../../enums/sort.enum';
 import { User } from '../../../models/user.model';
@@ -20,16 +10,9 @@ import { User } from '../../../models/user.model';
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
   standalone: true,
-  imports: [
-    UserTableComponent,
-    FormsModule,
-    UserTableHeaderComponent,
-    SpinnerComponent,
-    CommonModule,
-  ],
+  imports: [UserTableComponent, FormsModule, UserTableHeaderComponent],
 })
 export class UserListComponent implements OnInit {
-  isLoading: boolean = false;
   users: User[] = [];
   searchQuery: string = '';
   tableSearchQuery = {
@@ -53,35 +36,13 @@ export class UserListComponent implements OnInit {
     isVerified: 'def',
   };
 
-  constructor(
-    private userService: UserService,
-    private authService: AuthService,
-    private router: Router,
-    private route: ActivatedRoute,
-    @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
-    this.isLoading = true;
-    if (isPlatformBrowser(this.platformId)) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    this.route.paramMap.subscribe((params) => {
-      const fileName = params.get('district');
-      if (fileName) {
-        this.userService.loadUsersFromJson(fileName);
-      }
-      this.userService.getUsers().subscribe((data) => {
-        this.users = Array.isArray(data) ? data : [];
-        this.filteredUsers = [...this.users];
-      });
+    this.userService.getUsers().subscribe((data) => {
+      this.users = data;
+      this.filteredUsers = [...this.users];
     });
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1000);
-    if (!this.authService.isAuthenticated()) {
-      this.router.navigate(['/']);
-    }
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -92,7 +53,6 @@ export class UserListComponent implements OnInit {
   }
 
   filterUsers() {
-    this.isLoading = true;
     if (this.searchQuery.trim()) {
       this.filteredUsers = this.users.filter(
         (user) =>
@@ -111,7 +71,6 @@ export class UserListComponent implements OnInit {
     } else {
       this.filteredUsers = [...this.users];
     }
-    this.isLoading = false;
   }
 
   filterUsersFromTable() {
@@ -180,13 +139,9 @@ export class UserListComponent implements OnInit {
   }
 
   deleteUser(id: number): void {
-    this.isLoading = true;
     this.userService.deleteUser(id);
     this.userService.getUsers().subscribe((users) => {
       this.users = users;
     });
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 2000);
   }
 }

@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { DistrictService } from '../../../../core/services/district.service';
 import { UserAddFormDialogComponent } from '../user-add-form-dialog/user-add-form-dialog.component';
 
 @Component({
@@ -13,31 +11,9 @@ import { UserAddFormDialogComponent } from '../user-add-form-dialog/user-add-for
 })
 export class UserTableHeaderComponent {
   searchQuery: string = '';
-  districtName: string = '';
   @Output() searchQueryChange = new EventEmitter<string>();
 
-  constructor(
-    private dialog: MatDialog,
-    private router: Router,
-    private route: ActivatedRoute,
-    private districtService: DistrictService
-  ) {}
-
-  ngOnInit() {
-    this.route.paramMap.subscribe((params) => {
-      const fileName = params.get('district');
-      if (fileName) {
-        const district = this.districtService.getDistrictByFileName(fileName);
-        if (district) {
-          this.districtName = district.name;
-        } else {
-          console.error('District not found');
-        }
-      } else {
-        console.error('District file name not provided');
-      }
-    });
-  }
+  constructor(private dialog: MatDialog) {}
 
   openAddUserFormDialog(): void {
     const dialogRef = this.dialog.open(UserAddFormDialogComponent, {
@@ -49,10 +25,5 @@ export class UserTableHeaderComponent {
 
   filterUsers() {
     this.searchQueryChange.emit(this.searchQuery);
-  }
-
-  goToDashboard() {
-    console.log('Navigating to the dashboard');
-    this.router.navigate(['/dashboard']);
   }
 }

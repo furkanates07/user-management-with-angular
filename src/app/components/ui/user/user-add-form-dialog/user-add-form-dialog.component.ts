@@ -3,7 +3,6 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { UserService } from '../../../../core/services/user.service';
-import { ValidationService } from '../../../../core/services/validation.service';
 import { User } from '../../../../models/user.model';
 import { isStrongPassword } from '../../../../shared/validation/passwordValidation';
 import { isValidPhone } from '../../../../shared/validation/phoneValidation';
@@ -36,7 +35,6 @@ export class UserAddFormDialogComponent {
 
   constructor(
     private userService: UserService,
-    private validationService: ValidationService,
     private dialogRef: MatDialogRef<UserAddFormDialogComponent>
   ) {
     this.newUser = {
@@ -58,7 +56,6 @@ export class UserAddFormDialogComponent {
   }
 
   addUser(): void {
-    console.log('Adding user:', this.newUser);
     if (
       !this.newUser.first_name ||
       !this.newUser.last_name ||
@@ -73,11 +70,11 @@ export class UserAddFormDialogComponent {
     this.isPhoneInvalid = !isValidPhone(this.newUser.phone);
     this.isPasswordInvalid = !isStrongPassword(this.newUser.password);
 
-    this.usernameTaken = this.validationService.isUsernameTaken(
+    this.usernameTaken = this.userService.isUsernameTaken(
       this.newUser.username
     );
-    this.emailTaken = this.validationService.isEmailTaken(this.newUser.email);
-    this.phoneTaken = this.validationService.isPhoneTaken(this.newUser.phone);
+    this.emailTaken = this.userService.isEmailTaken(this.newUser.email);
+    this.phoneTaken = this.userService.isPhoneTaken(this.newUser.phone);
 
     if (this.usernameTaken || this.emailTaken || this.phoneTaken) {
       return;
